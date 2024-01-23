@@ -3,9 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="./css/stylo.css">
+    <title>PromedioExpress</title>
 </head>
 <body>
+    <div id="div-body">
+     <header>
+
+     </header>
+     <main>
+        <h1>Bienvenido a PromedioExpress</h1>
+        <p>Somos tu herramienta en línea para simplificar el proceso de calcular tu nota final con solo tres simples pasos. Olvídate de las complicadas fórmulas y deja que nuestra calculadora haga el trabajo por ti. Ingresa tus notas parciales en nuestros campos intuitivos y descubre al instante cuál será tu calificación final. Ya sea que estés evaluando tus resultados académicos o necesites conocer tu desempeño en diferentes áreas, estamos aquí para facilitarte la vida. ¡Comienza a calcular tus promedios de manera rápida y eficiente con PromedioExpress!
+        </p>
+        <div class="div-bcl">
+           <input id="nombre" type="text" placeholder="ingrese nombre"> </input>
+            <input id="priNota" type="text" placeholder="ingrese la nota del primer examen"> </input>
+            <input id="secNota" type="text" placeholder="ingrese la nota del segundo examen"> </input>
+            <input id="terNota" type="text" placeholder="ingrese la nota del tercer examen"> </input>
+            <button id="iniciar">Obtener Promedio</button>
+            <button id="boton-historial">Ver Historial</button>
+        </div>
+        <div id="contenido">
+            <div id="contenedor-h-dos">
+                <h2 id="hDos"></h2>
+            </div>
+            <div id="historial">
+            
+            </div>
+        </div>
+     </main> 
+    </div>
+    <footer>
+        <div>
+            <h3>Contacto</h3>
+            <a href=""><img  src="./images/facebook.jpg" alt="icono de facebook"></a></li>
+            <a href=""><img  src="./images/instagram.jpg" alt="icono de instagram"></a></li>
+            <a href=""><img  src="./images/whatsapp.jpg" alt="icono de whatsapp"></a></li>
+        </div>
+    </footer> 
     <script src="./index.js"></script>
 </body>
 </html>

@@ -1,78 +1,56 @@
-const historialAlumnos = [];
-function notaParcial(mensaje) {
-    let nota;
-    do {
-        nota = parseInt(prompt(mensaje));
-    } while (isNaN(nota) || nota < 0 || nota > 10);
-    return nota;
-}
+let storedHistorial = [];
 function promedioAlumn(...notas) {
     return notas.reduce((prev, nota) => prev + nota, 0) / notas.length;
 }
-let continuar = true
-while(continuar){
-    const saludo = prompt("¡Bienvenido a Coder House!, ingrese su nombre")
-    let opcion = prompt("hola"+" "+saludo+" ¿quieres saber el promedio de tus examenes y asi saber que nota deberias sacar en tu examen final? \n si/no")
-    if(opcion.toLowerCase() ==="si"){
-        let priParcial = notaParcial("Ingrese la nota que obtuvo en el primer parcial");
-        let secParcial = notaParcial("Ingrese la nota que obtuvo en el segundo parcial");
-        let terParcial = notaParcial("Ingrese la nota que obtuvo en el tercer parcial");
-        alert("Estas son tus notas ingresadas"+", "+priParcial+", "+secParcial+", "+terParcial+",\n se sumaran las 3 y despues se dividiran, en caso de que el decimal de 0,5 o mas se subira la nota")
-        let sumaDeParciales = promedioAlumn(priParcial,secParcial,terParcial)
-        const promedio = Math.round(sumaDeParciales)
-        const alumnos ={
-             nombre: saludo,
-             notaTotal: sumaDeParciales
-        }
-        historialAlumnos.push(alumnos);
-        switch(promedio){
-            case 1:
-            case 2: 
-            case 3:
-                alert("No te alcanza la nota para aprobar la materia")
-                break
-            case 4:
-                alert("Necesitas un 10 en tu examen final para aprobar la materia")
-                break
-            case 5:
-                alert("Necesitas un 9 en tu examen final para aprobar la materia")
-                break
-            case 6:
-                alert("Necesitas un 8 en tu examen final para aprobar la materia")
-                break
-            case 7:
-                alert("Necesitas un 7 en tu examen final para aprobar la materia")
-                break
-            case 8:
-                alert("Necesitas un 6 en tu examen final para aprobar la materia")
-                break  
-            case 9:
-                alert("Necesitas un 5 en tu examen final para aprobar la materia")
-                break 
-            case 10:
-                alert("Necesitas un 4 en tu examen final para aprobar la materia")
-                break 
-            default:
-                alert("calculo incorrecto, revisa que los numeros ingresados de tus examenes sean correctos") 
-                break         
-        }
-    }else if  (opcion.toLowerCase() === "no") {
-        alert("Muchas gracias hasta luego"+" "+saludo+"!!");
-        break;
-    }else {
-        alert("Opción no válida. Por favor, ingresa 'Si' o 'No'.");
-    }
+const nombre = document.querySelector("#nombre") 
+const contenedor= document.querySelector("#hDos")
+let nombreAlumno = " "
+nombre.addEventListener("input", (event)=>
+nombreAlumno = event.target.value)
+const primerNota = document.querySelector("#priNota")
+const segundaNota = document.querySelector("#secNota")
+const tercerNota = document.querySelector("#terNota")
+const boton = document.querySelector("#iniciar")
+let priParcial = 0;
+let secParcial = 0;
+let terParcial = 0;
+let alumnos= {
+    nombre: " ",
+    notaTotal: 0
 }
-historialAlumnos.forEach((alumno)=>{
-    console.log(alumno.nombre+" "+"tu nota final de los parciales es"+" "+ alumno.notaTotal);
+primerNota.addEventListener("input", (event) => {
+    priParcial = parseInt(event.target.value) || 0;
+});
+segundaNota.addEventListener("input", (event) => {
+    secParcial = parseInt(event.target.value) || 0;
+});
+tercerNota.addEventListener("input", (event) => {
+    terParcial = parseInt(event.target.value) || 0;
+});
+boton.addEventListener("click", () => {
+    let sumaDeParciales = promedioAlumn(priParcial, secParcial, terParcial);
+    const promedio = Math.round(sumaDeParciales);
+    alumnos ={
+       nombre: nombreAlumno,
+       notaTotal: promedio
+    } 
+    contenedor.innerHTML =`<h2>${nombreAlumno} Tu promedio es de un ${promedio}</h2>` 
+    storedHistorial = JSON.parse(localStorage.getItem("historialAlumnos")) || [];
+    storedHistorial.push(alumnos);
+    localStorage.setItem("historialAlumnos", JSON.stringify(storedHistorial));
+});
+const botonHistorial= document.querySelector("#boton-historial")
+const verHistorial = document.querySelector("#historial")
+botonHistorial.addEventListener("click", () => {
+    verHistorial.innerHTML = "";
+    storedHistorial.sort((a,b)=>{
+        if(a.nombre > b.nombre){
+           return 1;
+       } if(a.nombre<b.nombre){
+          return -1;
+        }return 0
+       })
+    storedHistorial.forEach((alumno)=>{
+        verHistorial.innerHTML += `<p>${alumno.nombre} tu nota final es ${alumno.notaTotal}</p>`
+    })
 })
-historialAlumnos.sort((a,b)=>{
- if(a.nombre > b.nombre){
-    return 1;
-} if(a.nombre<b.nombre){
-   return -1;
- }return 0
-})
-console.log(historialAlumnos);
-
-
