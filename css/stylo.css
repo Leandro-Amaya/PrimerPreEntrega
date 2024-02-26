@@ -2,12 +2,30 @@
     margin: 0; 
     padding: 0;
 }
+nav{
+    margin: 0px 30px 30px 30px;
+    padding: 20px;
+    display: flex;
+    gap: 30px;
+}
+nav a{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: black;
+    border: solid;
+    border-color: black;
+    background-color: beige;
+    border-radius: 10px;
+    padding: 10px;
+    text-decoration: none;
+}
 h1{
+    color:  rgb(250, 235, 215);
     font-size: 50px;
     text-align: center;
     font-weight: bold;
-    color: rgb(250, 235, 215);
     text-decoration: underline;
+    padding: 20px;
+    margin: 30px;
 }
 p{
     width: 400;
@@ -17,57 +35,148 @@ p{
     font-weight: bold;
     font-size: larger;
     color: rgb(0, 0, 0);
-    margin: 20px;
+    margin: 30px;
     padding: 20px;
 }
 h2{
-    background-color: rgb(250, 235, 215);
+    background-color:  rgb(250, 235, 215);
     text-align: center;
     font-weight: bold;
     color: rgb(0, 0, 0);
     margin: 20px;
-    
+    padding: 20px;
 }
-input{
-    width: 350px;
-    height: 50px; 
-    padding: 10px;
-}
-#div-body { 
-    background-image: url("../images/fondo-pantalla.jpg");
+.div-body { 
+    background-image: url("../images/Imagen-de-fondo-html.jpg");
     background-size: cover; 
     background-position: center; 
     background-repeat: no-repeat; 
   }
 #contenedor-h-dos{
     padding: 20px;
-    width: 500px;
-    height: 700px;
     display: flex;
     justify-content: center;
+    align-items: center;
+} 
+input::placeholder {
+    font-size: 22px; 
+    color: rgb(0, 0, 0);
+   
 }
- 
+ #nombre{
+    grid-area: nomb;
+    width: 500px;
+    height: 50px; 
+    padding: 10px;
+    margin: 30px;
+ }
+ #priNota{
+    grid-area: inputU;
+    width: 400px;
+    height: 50px; 
+    padding: 10px;
+    margin: 30px;
+ }
+ #secNota{
+    grid-area: inputD;
+    width: 400px;
+    height: 50px; 
+    padding: 10px;
+    margin: 30px;
+ }
+ #terNota {
+    grid-area: inputT;
+    width: 400px;
+    height: 50px; 
+    padding: 10px;
+    margin: 30px;
+ }
+ #iniciar{
+    grid-area: boton;
+ }
 .div-bcl{
-    display: inline-flex;
-    flex-direction: column;
-    align-items: space-evenly;
-    gap: 20px;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: 
+    "nomb nomb nomb"
+    "inputU inputD inputT"
+    "boton boton boton";
+    gap: 40px;
     margin: 20px;
     padding: 20px;
+    justify-items: center
 }
+#botones{
+    margin: 70px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
 button{
     width: 250px; 
-    padding: 10px;
+    height: 50px;
+    font-size: 20px; 
+    padding: 10px 20px;
+    margin: 30px;
 }
 #contenido{
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 200px;
 }
+#alumno-boton{
+    display: flex;
+    justify-content: center;
+    background-color:  rgb(250, 235, 215);
+    width: 700px;
+}
+#hitorial{
+    display: flex;
+    justify-items: center;
+    margin: 30px;
+}
+.boton-x{
+    margin: 30px; 
+    width: 50px;
+    
+}
+/* escuela.................................................. */
+.img-esc{
+    display: flex;
+    margin: 20px;
+    padding: 20px;
+}
+#promedio-final{
+    width: 350px;
+    height: 50px; 
+    padding: 10px;
+    margin: 30px;
+}
+#acceder-esc{
+    width: 780px;
+    background-color: antiquewhite;
+    padding: 20px;
+    margin: 20px;
+}
+ul{
+    font-size: 20px;
+    padding: 20px;
+    margin: 20px;
+    text-decoration: none;
+    list-style: none;
+}
+
 footer{
-    background-color: rgba(0, 0, 0, 0.899);
+    background-color: rgba(0, 0, 0, 0.704);
     color: rgb(250, 235, 215);
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 20px;
+   
 }
 footer div{
     gap: 20px;
